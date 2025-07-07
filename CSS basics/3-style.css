@@ -1,0 +1,110 @@
+/* Universal selector - affects the whole page */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Type selector - affects all elements of a given type*/
+p {
+  font-size: 16px;
+  margin-bottom: 1em;
+  color: #c200a8;
+}
+
+hr {
+  border: 1px solid #696969;
+  margin: 20px 0;
+}
+
+/* Class selector - affects all elements with a specific class */
+.highlight {
+  background-color: #ffff00;
+  color: #000000;
+}
+
+/* ID selector - affects a specific element with a unique ID */
+#unique {
+  color: #0000ff;
+  font-weight: bold;
+}
+
+/* Attribute selector - affects elements with a specific attribute */
+a[href] {
+  color: #ff0000;
+  text-decoration: underline;
+}
+
+input[type="text"] {
+  border: 4px dotted #66ff00;
+  background-color: #000;
+  color: #fff;
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Pseudo-class selector - affects elements in a specific state */
+a:hover {
+  color: #00ff00;
+  text-decoration: none;
+  animation: colorChange 0.25s ease-in;
+  font-size: 24px;
+}
+
+@keyframes colorChange {
+  0% {
+    color: #ff0000;
+  }
+  20% {
+       font-size: 16px;
+  }
+  100% {
+    color: #00ff00;
+
+  }
+}
+
+/* Descendant selector - affects elements that are descendants of a specific element */
+ul li {
+  color: #ff00ff;
+  font-style: italic;
+}
+
+/* Child selector - affects direct children of a specific element */
+ul > li {
+  font-weight: bold;
+}
+
+/* Sibling selector - affects elements that are siblings of a specific element */
+h2 + div {
+  color: #ffa500;
+  font-size: 18px;
+}
+
+h2 + div + div {
+  color: #008000;
+  font-size: 20px;
+}
+
+h2 + div + div + p {
+  color: #000080;
+  font-size: 22px;
+}
+
+/* Grouping selector - affects multiple elements with the same styles */
+h2, p, ul {
+  margin-bottom: 1em;
+}
+
+/* Pseudo-element selector - affects a specific part of an element */
+.pseudo-element::first-line {
+  font-size: 1.2em;
+  color: #ff4500;
+  font-weight: bold;
+}
+
+.pseudo-element::first-letter {
+  font-size: 1.5em;
+  color: #008080;
+  font-style: italic;
+}

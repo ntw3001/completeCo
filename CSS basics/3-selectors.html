@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="3-style.css">
+  <title>Seleptors!</title>
+</head>
+<body>
+
+  <hr/>
+  <p>No selectors on this line :(</p>
+  <hr/>
+  <p class="highlight">This paragraph has a class selector.</p>
+  <hr/>
+  <p id="unique">This paragraph has an ID selector.</p>
+  <hr/>
+  <input type="text" placeholder="This is an input field.">
+  <hr/>
+  <article>
+    <p>
+      This is a paragraph inside an article element. It's a direct child of the article element.
+    </p>
+  </article>
+  <hr/>
+  <ul>Looka dis list, we did descendant and child selectors!
+    <li class="item">Direct child list item 1</li>
+    <li class="item">Direct child list item 2</li>
+  </ul>
+  <hr/>
+  <h2>Subheading</h2>
+  <div>This is a sibling div to that subheading. Not a child! We use the + sign - like h2 + div - to select the immediate next sibling of a given type.</div>
+  <div>And we can just go like h2 + div + div to go down the list</div>
+  <p>And this is a sibling too. h2 + div + div + p does the job, you gotta go right down the list see</p>
+  <hr/>
+  <a href="#">Hover over this to see the pseudo-class selector happen.</a>
+  <hr/>
+  <p class="pseudo-element">
+    This paragraph <br>
+    has a pseudo-element applied to it.
+    The first line and first letter are styled differently.
+  </p>
+  <hr/>
+  <h3>Heading 3</h3>
+  <p>The headings h1, h2, and h3 use the grouping selector for consistent styling across multiple element types.</p>
+  <hr/>
+
+</body>
+</html>
