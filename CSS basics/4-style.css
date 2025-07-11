@@ -16,6 +16,7 @@ h2 {
   text-align: center;
   color: #444;
 }
+/* Nav1: Horizontal with underline effect */
 
 .nav1 {
   background-color: #dae7df;
@@ -92,7 +93,69 @@ h2 {
   background-color: #e09752;
   transform: scale(1.1);
   color: #1f4a2b;
+  font-weight: bold;
 }
 .nav1 .login-button:hover::after {
   transform: scaleX(1);
+}
+
+/* Nav2: Vertical with hover effect */
+
+.nav2 {
+  background-color: #dae7df;
+  padding: 10px;
+  width: 90px;
+  border-radius: 0 8px 8px 0;
+}
+
+.nav2 ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav2 li {
+  margin-bottom: 10px;
+}
+
+.nav2 a {
+  display: block;
+  text-decoration: none;
+  color: #245e3a;
+  padding: 8px 0px 8px 16px;
+  margin: 5px;
+  border-radius: 5px;
+  width: 90px;
+  background: linear-gradient(to left, #95cc85 50%, #ffcb9a 50%);
+  background-size: 180% 100%;
+  background-position:right bottom;
+  transition:all .2s ease;
+}
+
+.nav2 a:hover {
+  background-position:left bottom;
+  font-weight: bold;
+}
+
+.nav2 .login-button {
+  display: block;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+  color: #245e3a;
+  padding: 8px 0px 8px 16px;
+  margin: 5px;
+  border-radius: 5px;
+  width: 106px;
+  background: linear-gradient(to right, #95cc85 50%, #ffcb9a 50%);
+  background-size: 180% 100%;
+  background-position:right bottom;
+  transition:all .2s ease;
+}
+
+.nav2 .login-button:hover {
+  background-position:left bottom;
+  font-weight: bold;
 }
