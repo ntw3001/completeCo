@@ -81,7 +81,8 @@ h2 {
 }
 .nav1 .login-button::after {
   content: '';
-  position: absolute;  bottom: 4px;;
+  position: absolute;
+  bottom: 4px;;
   left: 10%;
   width: 80%;
   height: 2px;
@@ -150,7 +151,7 @@ h2 {
   border-radius: 5px;
   width: 106px;
   background: linear-gradient(to right, #95cc85 50%, #ffcb9a 50%);
-  background-size: 180% 100%;
+  background-size: 182% 98%;
   background-position:right bottom;
   transition:all .2s ease;
 }
@@ -158,4 +159,121 @@ h2 {
 .nav2 .login-button:hover {
   background-position:left bottom;
   font-weight: bold;
+}
+
+/* Nav3: Horizontal with dropdown menu */
+
+.nav3 {
+  background-color: #dae7df;
+  padding: 10px;
+  height: 48px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.nav3 ul {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  justify-content: space-around;
+  width: 40vw;
+  align-items: center;
+}
+
+.nav3 a {
+  text-decoration: none;
+  color: #245e3a;
+  background-color: #95cc85;
+  padding: 5px 10px;
+  border-radius: 5px;
+  height: 32px;
+  width: 64px;
+  line-height: 32px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  transition: all .2s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.nav3 .dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  height: 146px;
+  width: 0;
+  overflow: hidden;
+  background-color: #dae7df;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition:
+    width 0.3s ease 0.3s,
+    opacity 0.2s ease 0.6s,
+    transform 0.2s ease 0.6s;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.nav3 .dropdown-content > div {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nav3 .dropdown {
+  position: relative;
+  overflow: visible;
+}
+
+.dropdown-content a::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  bottom: 6px;
+  height: 20px;
+  width: 4px;
+  background-color: #ffcb9a;
+  transition: all .1s ease;
+}
+
+.nav3 a:hover {
+  background-color: #95cc85;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.nav3 .dropdown-line {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  height: 0;
+  width: 4px;
+  background-color: #95cc85;
+  transform-origin: top-left;
+  transition:
+    height 0.1s ease,
+    width 0.1s ease 0.1s;
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.nav3 .dropdown:hover .dropdown-line {
+  height: 60px; /* line drops down */
+}
+
+.nav3 .dropdown:hover .dropdown-content {
+  width: 112px;       /* expand horizontally */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
