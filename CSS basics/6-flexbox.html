@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="6-style.css">
+  <title>Flexin'</title>
+</head>
+<body>
+  <h1>Flex This</h1>
+
+  <div class="container">
+    <h2>default - row</h2>
+    <div class="flex-container">
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>flex-direction: column</h2>
+    <div class="flex-container" style="flex-direction: column;">
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>justify-content: space-between</h2>
+    <div class="flex-container" style="justify-content:space-between">
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>align-items: center</h2>
+    <div class="flex-container " style="align-items:center">
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>flex-wrap: wrap</h2>
+    <div class="flex-container" style="flex-wrap: wrap;">
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>align-content: space-around (with wrap)</h2>
+    <div class="flex-container" style="flex-wrap: wrap; align-content: space-around;">
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+      <div class="circle pastel-red">A</div>
+      <div class="circle pastel-blue">E</div>
+      <div class="circle pastel-green">I</div>
+      <div class="circle pastel-yellow">O</div>
+      <div class="circle pastel-purple">U</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>order property</h2>
+    <div class="flex-container">
+      <div class="circle pastel-red" style="order: 5;">A</div>
+      <div class="circle pastel-blue" style="order: 1;">E</div>
+      <div class="circle pastel-green" style="order: 4;">I</div>
+      <div class="circle pastel-yellow" style="order: 3;">O</div>
+      <div class="circle pastel-purple" style="order: 2;">U</div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <h2>flex grow</h2>
+    <div class="flex-container">
+      <div class="circle pastel-red" style="flex-grow: 3">A</div>
+      <div class="circle pastel-blue" style="flex-grow: 1">E</div>
+      <div class="circle pastel-green" style="flex-grow: 1">I</div>
+      <div class="circle pastel-yellow" style="flex-grow: 2">O</div>
+      <div class="circle pastel-purple" style="flex-grow: 1">U</div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>align self</h2>
+    <div class="flex-container">
+      <div class="circle pastel-red" style="align-self: flex-start;">A</div>
+      <div class="circle pastel-blue" style="align-self: center;">E</div>
+      <div class="circle pastel-green" style="align-self: flex-end">I</div>
+      <div class="circle pastel-yellow" style="align-self: stretch; height: auto;">O</div>
+      <div class="circle pastel-purple" style="align-self: flex-start">U</div>
+    </div>
+  </div>
+
+</body>
+</html>
