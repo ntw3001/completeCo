@@ -4,6 +4,8 @@ let cityPopulations = {}
 for (const city in citiesPopulation) {
   if (city !== "Berlin")
   cityPopulations[city] = citiesPopulation[city]
+  if (city == "Berlin") break
+
 }
 
 console.log(Object.values(cityPopulations))
