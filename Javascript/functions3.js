@@ -13,3 +13,15 @@ const sumPositiveNumbers = (arr) => {
   return positives.reduce((acc, curr) => acc + curr, 0)
 }
 console.log(sumPositiveNumbers([-1, 2, -3, 4, 5, -6, 7]))
+
+const getNames = (arr) => {
+  return arr.map(person => person.name);
+}
+console.log(getNames([{ name: "Alice" }, { name: "Bob" }, { name: "Charlie" }]));
+
+const findLongestWord = (arr) => {
+  return arr.reduce((longest, current) => {
+    return current.length > longest.length ? current : longest;
+  }, "");
+}
+console.log(findLongestWord(["apple", "banana", "cherry", "date"]));
