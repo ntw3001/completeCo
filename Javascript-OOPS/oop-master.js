@@ -49,3 +49,50 @@ class Car extends Vehicle {
 let myCar = new Car ("Honda", "Civic", 2019)
 console.log (myCar.start())
 console.log (myCar.drive())
+
+// Encapsulation
+
+class BankAccount {
+  #balance = 0;
+  deposit(amount) {
+    this.#balance += amount;
+    console.log(`Oh buoy! ${amount} currency units! Gromf nomf chomp chew`);
+    return this.#balance;
+  }
+  withdraw(amount) {
+    this.#balance -= amount;
+    console.log(`Oh no! Please don't take those ${amount} currency units I need them D:`);
+    return this.#balance;
+  }
+  getBalance() {
+    return `You have a ${this.#balance} of currency units`;
+  }
+}
+
+let account = new BankAccount();
+console.log(account.getBalance());
+account.deposit(100);
+console.log(account.getBalance());
+account.withdraw(30);
+console.log(account.getBalance());
+
+class CoffeeMachine {
+  start() {
+    return "Starting the coffee machine";
+  }
+  brewCoffee() {
+    return "Brewing coffee";
+  }
+  stop() {
+    return "Stopping the coffee machine";
+  }
+  pressStartOnTheCoffeeMachine() {
+    let msgOne = this.start();
+    let msgTwo = this.brewCoffee();
+    let msgThree = this.stop();
+    return `${msgOne}\n${msgTwo}\n${msgThree}`;
+  }
+}
+
+let machine = new CoffeeMachine();
+console.log(machine.pressStartOnTheCoffeeMachine());
