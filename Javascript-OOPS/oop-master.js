@@ -96,3 +96,55 @@ class CoffeeMachine {
 
 let machine = new CoffeeMachine();
 console.log(machine.pressStartOnTheCoffeeMachine());
+
+
+// Polymorphism
+
+class Bird {
+  fly() {
+    return "The bird is flying";
+  }
+}
+
+class Penguin extends Bird {
+  fly() {
+    return "No";
+  }
+}
+
+class Eagle extends Bird {
+}
+
+let myBird = new Bird();
+let myPenguin = new Penguin();
+let myEagle = new Eagle();
+
+console.log("Sparrow fly: " + myBird.fly());
+console.log("Penguin fly: " + myPenguin.fly());
+console.log("Eagle fly: " + myEagle.fly());
+
+// Static Methods and Properties
+
+class Calculator {
+  static add(a, b) {
+    return a + b;
+  }
+  static subtract(a, b) {
+    return a - b;
+  }
+  static multiply(a, b) {
+    return a * b;
+  }
+  static divide(a, b) {
+    if (b === 0) {
+      throw new Error("Disgraceful");
+    }
+    return a / b;
+  }
+}
+
+let miniCalc =  new Calculator();
+console.log(miniCalc.add(2,3));
+console.log(miniCalc.subtract(5,2));
+console.log(miniCalc.multiply(3,4));
+console.log(miniCalc.divide(8,2));
