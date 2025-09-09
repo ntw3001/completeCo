@@ -143,8 +143,49 @@ class Calculator {
   }
 }
 
-let miniCalc =  new Calculator();
-console.log(miniCalc.add(2,3));
-console.log(miniCalc.subtract(5,2));
-console.log(miniCalc.multiply(3,4));
-console.log(miniCalc.divide(8,2));
+// This won't work because the methods are static
+
+// let miniCalc =  new Calculator();
+// console.log(miniCalc.add(2,3));
+// console.log(miniCalc.subtract(5,2));
+// console.log(miniCalc.multiply(3,4));
+// console.log(miniCalc.divide(8,2));
+
+// You ahve to do this, calling the methods on the class itself
+
+console.log(Calculator.add(2,3));
+console.log(Calculator.subtract(5,2));
+console.log(Calculator.multiply(3,4));
+console.log(Calculator.divide(8,2));
+
+// Getters and Setters
+// Getters and Setters
+//Let you control how properties are accessed and modified. A getter runs code whenever the property is read. A setter runs code whenever the property is written. Often used to protect private fields or enforce rules. They prevent direct access to a property, so values cannot be edited directly uain external code.
+
+class Employee {
+  #salary
+  constructor (name, salary){
+    this.name = name
+    this.#salary = salary
+  }
+
+  get salary(){
+    return "You're not supposed to see that"
+  }
+
+  set salary(value) {
+    if (value < 0) {
+      console.error("Invalid salary")
+    } else {
+      this.#salary = value;
+    }
+  }
+}
+
+let emp = new Employee("Alice", 50000)
+
+console.log(emp.salary);   // 50000 (but won't show actual salary)
+emp.salary = 60000;        // updates salary
+console.log(emp.salary);   // 60000
+emp.salary = -1000;        // Invalid salary
+console.log(emp.salary);   // still 60000
