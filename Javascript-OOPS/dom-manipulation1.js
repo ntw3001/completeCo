@@ -33,3 +33,23 @@ removeItem.addEventListener("click", function() {
   console.log(lastItem)
   taskList.removeChild(lastItem)
 })
+
+const disgraceText = document.getElementById("disgraceText")
+const toggleVisibility = document.getElementById("toggleVisibility")
+toggleVisibility.addEventListener("click", function() {
+  if (disgraceText.textContent === "Fuck you!") {
+    disgraceText.textContent = "Sorry about that"
+    toggleVisibility.textContent = "Replace that disgrace"
+  } else {
+    disgraceText.textContent = "Fuck you!"
+    toggleVisibility.textContent = "Remove this disgrace"
+  }
+})
+
+const teaList = document.getElementById("teaList")
+
+teaList.addEventListener("click", function(event) {
+  if (event.target.classList.contains("teaItem")) {
+    alert("You clicked on " + event.target.textContent);
+  }
+})
