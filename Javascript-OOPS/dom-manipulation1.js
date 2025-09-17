@@ -53,3 +53,16 @@ teaList.addEventListener("click", function(event) {
     alert("You clicked on " + event.target.textContent);
   }
 })
+
+const wordForm = document.getElementById("wordForm")
+const feedbackDisplay = document.getElementById("feedbackDisplay");
+
+wordForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+  feedbackDisplay.innerHTML = "";
+  let input = document.getElementById("input");
+  let newContent = document.createElement("li");
+  newContent.textContent = `Your feedback says: ${input.value}. Wow!`;
+  feedbackDisplay.appendChild(newContent);
+  input.value = "";
+});
