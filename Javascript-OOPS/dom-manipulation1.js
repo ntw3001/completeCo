@@ -74,12 +74,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const descriptionText = document.getElementById("descriptionText");
 const colourChange = document.getElementById("toggleColour");
-
+function getRandomColor() {
+  const hexRange = "0123456789ABCDEF";
+  let colourArray= ["00", "00", "00"];
+  for (let i = 0; i < 3; i++) {
+    let firstHex = hexRange[Math.floor(Math.random() * 16)];
+    let secondHex = hexRange[Math.floor(Math.random() * 16)];
+    colourArray[i] = firstHex + secondHex;
+  }
+  return "#" + colourArray.join("");
+}
 colourChange.addEventListener("click", function() {
   for (const sheet of document.styleSheets) {
     for (const rule of sheet.cssRules) {
       if (rule.selectorText === ".colourchange") {
-        rule.style.color = "red";
+        rule.style.color = getRandomColor();
       }
     }
   }
