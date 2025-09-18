@@ -66,3 +66,21 @@ wordForm.addEventListener("submit", function(event) {
   feedbackDisplay.appendChild(newContent);
   input.value = "";
 });
+
+const domStatus = document.getElementById("domStatus");
+document.addEventListener("DOMContentLoaded", function() {
+  domStatus.textContent = "The DOM has fully loaded!";
+})
+
+const descriptionText = document.getElementById("descriptionText");
+const colourChange = document.getElementById("toggleColour");
+
+colourChange.addEventListener("click", function() {
+  for (const sheet of document.styleSheets) {
+    for (const rule of sheet.cssRules) {
+      if (rule.selectorText === ".colourchange") {
+        rule.style.color = "red";
+      }
+    }
+  }
+})
