@@ -90,3 +90,23 @@ function Dog(name) {
 }
 Dog.prototype = Object.create(Animal.prototype)
 Dog.prototype.constructor = Dog
+
+// Task 2
+function Shape(color) {
+  this.color = color
+  this.getColor = function() {
+    return this.color
+  }
+}
+
+function Rectangle(width, height, color) {
+  Shape.call(this, color)
+  this.height = height
+  this.width = width
+  this.getArea = function() {
+    return (this.width * this.height)
+  }
+}
+
+Rectangle.prototype = Object.create(Shape.prototype)
+Rectangle.prototype.constructor = Rectangle
