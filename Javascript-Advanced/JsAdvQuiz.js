@@ -75,38 +75,66 @@
 // }
 
 // Task 1
-function Animal(name) {
-  this.name = name
-}
+// function Animal(name) {
+//   this.name = name
+// }
 
-Animal.prototype.makeSound = function() {
-  return "Animal sound"
+// Animal.prototype.makeSound = function() {
+//   return "Animal sound"
 
-}
-function Dog(name) {
-  this.bark = function() {
-    return "Woof!"
-  }
-}
-Dog.prototype = Object.create(Animal.prototype)
-Dog.prototype.constructor = Dog
+// }
+// function Dog(name) {
+//   this.bark = function() {
+//     return "Woof!"
+//   }
+// }
+// Dog.prototype = Object.create(Animal.prototype)
+// Dog.prototype.constructor = Dog
+
+// // Task 2
+// function Shape(color) {
+//   this.color = color
+//   this.getColor = function() {
+//     return this.color
+//   }
+// }
+
+// function Rectangle(width, height, color) {
+//   Shape.call(this, color)
+//   this.height = height
+//   this.width = width
+//   this.getArea = function() {
+//     return (this.width * this.height)
+//   }
+// }
+
+// Rectangle.prototype = Object.create(Shape.prototype)
+// Rectangle.prototype.constructor = Rectangle
+
+// Task 1
+const person = {
+    name: "Alice",
+    introduce: function() {
+        return `Hi, my name is ${this.name}`
+    }
+};
+
+const boundIntroduce = person.introduce.bind(person)
 
 // Task 2
-function Shape(color) {
-  this.color = color
-  this.getColor = function() {
-    return this.color
-  }
+function introduce() {
+    return `Hi, my name is ${this.name}`
 }
+const person1 = { name: "Bob" }
+const person2 = { name: "Carol" }
+introduce.call(person1)
+introduce.call(person2)
 
-function Rectangle(width, height, color) {
-  Shape.call(this, color)
-  this.height = height
-  this.width = width
-  this.getArea = function() {
-    return (this.width * this.height)
-  }
+// Task 3
+function sum(a, b) {
+    return a + b * this.factor
 }
-
-Rectangle.prototype = Object.create(Shape.prototype)
-Rectangle.prototype.constructor = Rectangle
+const double = { multiplier: 2 }
+const triple = { multiplier: 3 }
+sum.apply(double, [2, 3])
+sum.apply(triple, [2, 3])
