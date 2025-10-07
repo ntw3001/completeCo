@@ -111,30 +111,76 @@
 // Rectangle.prototype = Object.create(Shape.prototype)
 // Rectangle.prototype.constructor = Rectangle
 
-// Task 1
-const person = {
-    name: "Alice",
-    introduce: function() {
-        return `Hi, my name is ${this.name}`
-    }
-};
+// // Task 1
+// const person = {
+//     name: "Alice",
+//     introduce: function() {
+//         return `Hi, my name is ${this.name}`
+//     }
+// };
+// const boundIntroduce = person.introduce.bind(person)
 
-const boundIntroduce = person.introduce.bind(person)
+// // Task 2
+// function introduce() {
+//     return `Hi, my name is ${this.name}`
+// }
+// const person1 = { name: "Bob" }
+// const person2 = { name: "Carol" }
+// introduce.call(person1)
+// introduce.call(person2)
+
+// // Task 3
+// function sum(a, b) {
+//     return a + b * this.factor
+// }
+// const double = { multiplier: 2 }
+// const triple = { multiplier: 3 }
+// sum.apply(double, [2, 3])
+// sum.apply(triple, [2, 3])
+
+// Task 1
+function fetchUser() {
+  return new Promise ((resolve) => {
+    setTimeout(() => {
+      resolve ("User data")
+    }, 1000);
+  })
+}
+
+function fetchPosts() {
+  return new Promise ((resolve) => {
+    setTimeout(() => {
+      resolve ("Posts data")
+    }, 1000);
+  })
+}
+
+async function fetchAllData() {
+    try {
+    const results = await Promise.all([fetchUser(), fetchPosts()]);
+    return results
+  } catch (error) {
+    return ["Error occurred"]
+  }
+}
 
 // Task 2
-function introduce() {
-    return `Hi, my name is ${this.name}`
+function fetchSuccess() {
 }
-const person1 = { name: "Bob" }
-const person2 = { name: "Carol" }
-introduce.call(person1)
-introduce.call(person2)
+
+function fetchFailure() {
+}
+
+async function handlePromises() {
+  try {
+  } catch (error) {
+  }
+}
 
 // Task 3
-function sum(a, b) {
-    return a + b * this.factor
+function fetchWithTimeout(promise, timeout) {
 }
-const double = { multiplier: 2 }
-const triple = { multiplier: 3 }
-sum.apply(double, [2, 3])
-sum.apply(triple, [2, 3])
+
+function fetchData() {
+  return new Promise(resolve => setTimeout(() => resolve('Data fetched'), 3000));
+}
