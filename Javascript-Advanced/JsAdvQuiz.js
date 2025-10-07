@@ -138,49 +138,65 @@
 // sum.apply(double, [2, 3])
 // sum.apply(triple, [2, 3])
 
+
 // Task 1
 function fetchUser() {
-  return new Promise ((resolve) => {
-    setTimeout(() => {
-      resolve ("User data")
-    }, 1000);
-  })
+    return new Promise ((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve("User data")
+        }, 1000)
+    })
 }
-
 function fetchPosts() {
-  return new Promise ((resolve) => {
-    setTimeout(() => {
-      resolve ("Posts data")
-    }, 1000);
-  })
+    return new Promise ((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve("Posts data")
+        }, 1000)
+    })
 }
-
 async function fetchAllData() {
-    try {
-    const results = await Promise.all([fetchUser(), fetchPosts()]);
-    return results
-  } catch (error) {
-    return ["Error occurred"]
+  try {
+      const [user, posts] = await Promise.all([fetchUser(), fetchPosts()])
+      console.log(user);
+      console.log(posts);
+  } catch(error) {
+      console.error("Error occurred")
   }
 }
 
 // Task 2
 function fetchSuccess() {
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve("Promise resolved")
+        }, 1000)
+    })
 }
-
 function fetchFailure() {
+    return new Promise((reject)=>{
+        setTimeout(()=>{
+            reject("Promise rejected")
+        }, 1000)
+    })
 }
-
 async function handlePromises() {
   try {
+      const [success, failure] = Promise.all([fetchSuccess(), fetchFailure()])
+      console.log(success);
   } catch (error) {
+    console.log("Error occurred");
   }
 }
 
 // Task 3
 function fetchWithTimeout(promise, timeout) {
+    const timeoutPromise = new Promise((_, reject)=>{
+        setTimeout(()=>{
+            reject("Timeout exceeded");
+        }, timeout)
+    })
+    return Promise.race([promise, timeoutPromise])
 }
-
 function fetchData() {
   return new Promise(resolve => setTimeout(() => resolve('Data fetched'), 3000));
 }
