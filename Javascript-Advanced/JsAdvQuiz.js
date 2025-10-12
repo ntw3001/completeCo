@@ -139,64 +139,111 @@
 // sum.apply(triple, [2, 3])
 
 
-// Task 1
-function fetchUser() {
-    return new Promise ((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve("User data")
-        }, 1000)
-    })
+// // Task 1
+// function fetchUser() {
+//     return new Promise ((resolve, reject)=>{
+//         setTimeout(()=>{
+//             resolve("User data")
+//         }, 1000)
+//     })
+// }
+// function fetchPosts() {
+//     return new Promise ((resolve, reject)=>{
+//         setTimeout(()=>{
+//             resolve("Posts data")
+//         }, 1000)
+//     })
+// }
+// async function fetchAllData() {
+//   try {
+//       const [user, posts] = await Promise.all([fetchUser(), fetchPosts()])
+//       console.log(user);
+//       console.log(posts);
+//   } catch(error) {
+//       console.error("Error occurred")
+//   }
+// }
+
+// // Task 2
+// function fetchSuccess() {
+//     return new Promise((resolve)=>{
+//         setTimeout(()=>{
+//             resolve("Promise resolved")
+//         }, 1000)
+//     })
+// }
+// function fetchFailure() {
+//     return new Promise((reject)=>{
+//         setTimeout(()=>{
+//             reject("Promise rejected")
+//         }, 1000)
+//     })
+// }
+// async function handlePromises() {
+//   try {
+//       const [success, failure] = Promise.all([fetchSuccess(), fetchFailure()])
+//       console.log(success);
+//   } catch (error) {
+//     console.log("Error occurred");
+//   }
+// }
+
+// // Task 3
+// function fetchWithTimeout(promise, timeout) {
+//     const timeoutPromise = new Promise((_, reject)=>{
+//         setTimeout(()=>{
+//             reject("Timeout exceeded");
+//         }, timeout)
+//     })
+//     return Promise.race([promise, timeoutPromise])
+// }
+// function fetchData() {
+//   return new Promise(resolve => setTimeout(() => resolve('Data fetched'), 3000));
+// }
+
+function* numberGenerator() {
+    yield 1;
+    yield 2;
+    yield 3;
 }
-function fetchPosts() {
-    return new Promise ((resolve, reject)=>{
-        setTimeout(()=>{
-            resolve("Posts data")
-        }, 1000)
-    })
+console.log("task 1")
+const gen = numberGenerator();
+console.log(gen.next());
+console.log(gen.next());
+console.log(gen.next());
+
+function* rangeIterator(start, end) {
+    let number = start;
+    while (number <= end) {
+        yield number++
+    }
 }
-async function fetchAllData() {
-  try {
-      const [user, posts] = await Promise.all([fetchUser(), fetchPosts()])
-      console.log(user);
-      console.log(posts);
-  } catch(error) {
-      console.error("Error occurred")
+console.log("task 2")
+const rangeGen = rangeIterator(5, 10);
+console.log(rangeGen.next());
+console.log(rangeGen.next());
+console.log(rangeGen.next());
+console.log(rangeGen.next());
+console.log(rangeGen.next());
+console.log(rangeGen.next());
+console.log(rangeGen.next());
+
+function* fibonacciGenerator() {
+  let first = 1
+  let second = 1
+  while (true) {
+    yield first
+    const next = first + second
+    first = second
+    second = next
   }
 }
-
-// Task 2
-function fetchSuccess() {
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve("Promise resolved")
-        }, 1000)
-    })
-}
-function fetchFailure() {
-    return new Promise((reject)=>{
-        setTimeout(()=>{
-            reject("Promise rejected")
-        }, 1000)
-    })
-}
-async function handlePromises() {
-  try {
-      const [success, failure] = Promise.all([fetchSuccess(), fetchFailure()])
-      console.log(success);
-  } catch (error) {
-    console.log("Error occurred");
-  }
-}
-
-// Task 3
-function fetchWithTimeout(promise, timeout) {
-    const timeoutPromise = new Promise((_, reject)=>{
-        setTimeout(()=>{
-            reject("Timeout exceeded");
-        }, timeout)
-    })
-    return Promise.race([promise, timeoutPromise])
-}
-function fetchData() {
-  return new Promise(resolve => setTimeout(() => resolve('Data fetched'), 3000));
-}
+console.log("task 3")
+const fibGen = fibonacciGenerator();
+console.log(fibGen.next());
+console.log(fibGen.next());
+console.log(fibGen.next());
+console.log(fibGen.next());
+console.log(fibGen.next());
+console.log(fibGen.next());
+console.log(fibGen.next());
