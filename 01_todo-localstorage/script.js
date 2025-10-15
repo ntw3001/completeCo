@@ -19,10 +19,34 @@ document.addEventListener("DOMContentLoaded", () => {
     tasks.push(newTask)
     todoInput.value = ""
     console.log(tasks)
+    renderTask(newTask)
+    saveTasks()
   })
 
   function renderTask(task) {
-    console.log("fick!")
+    const li = document.createElement("li")
+    li.setAttribute("data-id", task.id)
+    if(task.completed) {
+      li.classList.add("completed")
+    }
+    li.innerHTML = `
+      <span>${task.text}</span>
+      <button id="delete-btn">Delete</button>
+    `
+    li.addEventListener("click", (e) => {
+      if(e.target.tagName === "BUTTON") return // Ignore clicks on the delete button
+      task.completed = !task.completed
+      li.classList.toggle("completed")
+      saveTasks()
+    })
+
+    li.querySelector("#delete-btn").addEventListener("click", () => {
+      tasks = tasks.filter(t => t.id !== task.id)
+      li.remove()
+      saveTasks()
+    })
+
+    todoList.appendChild(li)
   }
 
   // Stringify the task list and save to local storage
