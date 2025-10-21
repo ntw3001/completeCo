@@ -6,3 +6,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const temperatureDisplay = document.getElementById("temperature");
   const descriptionDisplay = document.getElementById("description");
   const errorMessage = document.getElementById("error-message");
+
+  const apiKey = ""
+
+  getWeatherBtn.addEventListener("click", () => {
+    const city = cityInput.value.trim();
+    if (!city) return;
+  })
+
+  function fetchWeatherData(city) {
+
+  }
+
+  function displayWeatherData(weatherData) {
+
+  }
+
+  function showError() {
+    weatherInfo.classList.add("hidden")
+    errorMessage.classList.remove("hidden")
+  }
+})
