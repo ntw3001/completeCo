@@ -9,12 +9,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const apiKey = ""
 
-  getWeatherBtn.addEventListener("click", () => {
+  getWeatherBtn.addEventListener("click", async () => {
     const city = cityInput.value.trim();
     if (!city) return;
+
+    try {
+      const weatherData = await fetchWeatherData(city)
+    } catch (error) {
+      showError()
+    }
   })
 
-  function fetchWeatherData(city) {
+  async function fetchWeatherData(city) {
 
   }
 
