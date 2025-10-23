@@ -12,6 +12,7 @@
     "braces": "^3.0.3",
     "chownr": "^3.0.0",
     "detect-libc": "^1.0.3",
+    "dotenv": "^17.2.3",
     "enhanced-resolve": "^5.18.2",
     "fill-range": "^7.1.1",
     "graceful-fs": "^4.2.11",
