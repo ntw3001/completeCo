@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const cart = []
   const productList = document.getElementById("product-list")
-  const cartItems = document.getElementById("cart-items")
+  const cartItemsDisplay = document.getElementById("cart-items")
   const emptyCartMessage = document.getElementById("empty-cart")
   const cartTotalMessage = document.getElementById("cart-total")
   const totalPriceDisplay = document.getElementById("total-price")
@@ -39,5 +39,37 @@ document.addEventListener('DOMContentLoaded', function() {
   function addToCart(product) {
     cart.push(product)
     console.log(cart)
+    renderCart()
   }
+
+  function renderCart() {
+    cartItemsDisplay.innerText = ""
+    let totalPrice = 0
+
+    if(cart.length) {
+      emptyCartMessage.classList.add("hidden")
+      cartTotalMessage.classList.remove("hidden")
+      cart.forEach((item, index) => {
+        totalPrice += item.price
+        const cartItem = document.createElement("div")
+        cartItem.innerHTML = `
+        ${item.name} - ${item.price.toFixed(2)}
+        `
+        cartItemsDisplay.appendChild(cartItem)
+        totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`
+      })
+    } else {
+      emptyCartMessage.classList.remove("hidden")
+    }
+  }
+
+  checkoutBtn.addEventListener("click", () => {
+    if(cart.length) {
+      alert(`Total amount: $${totalPriceDisplay.textContent}. Proceeding to checkout...`)
+    } else {
+      alert("Your cart is empty!")
+    }
+    cart.length = 0
+    renderCart()
+  })
 })
