@@ -60,6 +60,30 @@ h2 {
   margin-bottom: 20px;
 }
 
+#cart-items button  {
+  background-color: #ff1e1e;
+  border: none;
+  padding: 2px 4px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#cart-items button:hover {
+  background-color: #ff4c4c;
+}
+
+.cart-item {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0 4px 0;
+  padding: 4px 8px 4px 8px;
+  background-color: #333333;
+  border-radius: 2px;
+}
+
 #cart-total {
   text-align: right;
 }

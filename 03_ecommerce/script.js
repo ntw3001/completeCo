@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   ]
 
 
-  const cart = []
+  let cart = JSON.parse(localStorage.getItem("cart")) || []
   const productList = document.getElementById("product-list")
   const cartItemsDisplay = document.getElementById("cart-items")
   const emptyCartMessage = document.getElementById("empty-cart")
@@ -52,15 +52,30 @@ document.addEventListener('DOMContentLoaded', function() {
       cart.forEach((item, index) => {
         totalPrice += item.price
         const cartItem = document.createElement("div")
-        cartItem.innerHTML = `
-        ${item.name} - ${item.price.toFixed(2)}
+        cartItem.classList.add("cart-item")
+        cartItem.innerHTML = `<span>
+        ${item.name} - ${item.price.toFixed(2)}</span>
+        <button cart-index="${index}">X</button>
         `
         cartItemsDisplay.appendChild(cartItem)
-        totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`
       })
     } else {
       emptyCartMessage.classList.remove("hidden")
     }
+    totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`
+    saveCart()
+  }
+
+  cartItemsDisplay.addEventListener("click", (e) => {
+    if(e.target.tagName === "BUTTON"){
+      const index = parseInt(e.target.getAttribute("cart-index"))
+      removeFromCart(index)
+    }
+  })
+
+  function removeFromCart(index) {
+    cart.splice(index, 1)
+    renderCart()
   }
 
   checkoutBtn.addEventListener("click", () => {
@@ -72,4 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
     cart.length = 0
     renderCart()
   })
+
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart))
+  }
+
+  renderCart()
+
 })
