@@ -1,0 +1,20 @@
+{
+  "name": "projmng",
+  "version": "1.0.0",
+  "description": "A little project management backend course",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "backend",
+    "API",
+    "udemy"
+  ],
+  "author": "ntw3001",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.7.2"
+  }
+}
