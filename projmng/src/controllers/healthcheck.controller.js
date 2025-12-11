@@ -1,6 +1,6 @@
 import { ApiResponse } from '../utils/api-response.js';
 
-const healthCheck = (req, res) => {
+const healthcheck = (req, res) => {
   try {
     res.status(200).json(
       new ApiResponse(200, {
@@ -9,4 +9,4 @@ const healthCheck = (req, res) => {
   } catch (error) {}
 }
 
-export { healthCheck }
+export { healthcheck }

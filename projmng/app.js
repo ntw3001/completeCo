@@ -1,5 +1,8 @@
 import express from 'express';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 const app = express()
 
@@ -17,7 +20,7 @@ app.use(cors({
 
 //import routes
 
-import healthCheckRouter from './routes/healthcheck.routes.js';
+import healthCheckRouter from './src/routes/healthcheck.routes.js';
 
 //use routes
 app.use('/api/v1/healthcheck', healthCheckRouter);
