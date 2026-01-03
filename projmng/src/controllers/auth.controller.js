@@ -3,7 +3,7 @@ import { ApiResponse } from '../utils/api-response.js';
 import { asyncHandler } from '../utils/async-handler.js';
 import { ApiError } from '../utils/api-error.js';
 import { sendMail, mailgenVerificationMail, mailgenPasswordForgetMail } from '../utils/mail.js';
-import { useReducer } from 'react';
+// import { useReducer } from 'react';
 
 const generateAccessAndRefreshTokens = async (userId) => {
   const user = await User.findById(userId);
@@ -22,7 +22,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
 };
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { email, username, password, role } = req.body;
+  const { email, username, password, role } = req.body || {};
 
   const existingUser = await User.findOne({
     $or: [{ email }, { username }],
@@ -71,7 +71,7 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const loginUser = asyncHandler(async (req, res) => {
-  const { email, username, password } = req.body;
+  const { email, username, password } = req.body || {};
   if (!email ) {
     throw new ApiError(400, 'Email is required');
   }
@@ -82,7 +82,7 @@ const loginUser = asyncHandler(async (req, res) => {
       throw new ApiError(400, 'Nice try, no such person');
     }
 
-    const isPasswordValid = await user.comparePassword(password);
+    const isPasswordValid = await user.isPasswordCorrect(password);
     if (!isPasswordValid) {
       throw new ApiError(400, 'Incorrect password');
     }

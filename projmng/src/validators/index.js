@@ -22,15 +22,30 @@ const userRegisterValidator = () => {
       .withMessage('Password is required')
       .isLength({ min: 6 })
       .withMessage('Password must be at least 6 characters long'),
-    body('fullName')
+    // body('fullName')
+    //   .trim()
+    //   .notEmpty()
+    //   .withMessage('Full name is required')
+    //   .isString()
+    //   .withMessage('Full name must be a string'),
+  ];
+}
+
+const userLoginValidator = () => {
+  return [
+    body('email')
+      .trim()
+      .optional()
+      .isEmail()
+      .withMessage('Are you sure that\'s your email address?'),
+    body('password')
       .trim()
       .notEmpty()
-      .withMessage('Full name is required')
-      .isString()
-      .withMessage('Full name must be a string'),
+      .withMessage('No, give me a password'),
   ];
 }
 
 export {
   userRegisterValidator,
+  userLoginValidator,
 }
