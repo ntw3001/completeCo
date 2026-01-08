@@ -138,6 +138,7 @@ const logoutUser = asyncHandler(async (req, res) => {
         'User logged out successfully'
       )
     )
+  );
 });
 
 export { registerUser, loginUser, logoutUser };
