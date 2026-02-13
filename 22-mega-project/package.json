@@ -10,7 +10,7 @@
   ],
   "license": "ISC",
   "author": "Nick",
-  "type": "commonjs",
+  "type": "module",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,6 +22,8 @@
     "prettier": "^3.8.1"
   },
   "dependencies": {
+    "cors": "^2.8.6",
+    "env": "^0.0.2",
     "express": "^5.2.1",
     "mongoose": "^9.2.1"
   }
