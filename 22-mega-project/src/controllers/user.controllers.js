@@ -157,7 +157,7 @@ const loginUser = asyncHandler( async (req, res) => {
     ))
 })
 
-const logoutUser = asyncHandler (async (req, res) => {
+const logoutUser = asyncHandler ( async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
     {
@@ -181,7 +181,7 @@ const logoutUser = asyncHandler (async (req, res) => {
 
 })
 
-const refreshAccessToken = asyncHandler (async (req, res) => {
+const refreshAccessToken = asyncHandler ( async (req, res) => {
   const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
 
   if(!incomingRefreshToken) {
@@ -268,7 +268,7 @@ const updateAccountDetails = asyncHandler( async (req, res) => {
 })
 
 const updateUserAvatar = asyncHandler( async (req, res) => {
-  const avatarLocalPath = req.files?.path
+  const avatarLocalPath = req.file?.path
 
   if(!avatarLocalPath) {
     throw new ApiError(400, "Throw me a file though bro")
@@ -310,7 +310,7 @@ const updateUserCoverImage = asyncHandler( async (req, res) => {
     req.user?._id,
     {
       $set: {
-        avatar: coverImage.url
+        coverImage: coverImage.url
       }
     },
     {new: true}
@@ -350,7 +350,7 @@ const getUserChannelProfile = asyncHandler( async (req, res) =>{
         }
       },
       {
-        $addfields: {
+        $addFields: {
           subscriberCount: {
             $size: "$subscribers"
           },
@@ -387,7 +387,7 @@ const getUserChannelProfile = asyncHandler( async (req, res) =>{
     throw new ApiError(404, "Channel remains unfound")
   }
 
-  return res.status(200),json( new ApiResponse(
+  return res.status(200).json( new ApiResponse(
     200,
     channel[0],
     "Channel profile is get!"
