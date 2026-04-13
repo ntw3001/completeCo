@@ -72,7 +72,7 @@ const getChannelVideos = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Not you")
   }
 
-  const allVideos = await Video.find({ owner: userId}).sort({ createdAt: -1 }).select("title thumbnail views createdAt")
+  const allVideos = await Video.find({ owner: userId }).sort({ createdAt: -1 }).select("title thumbnail views createdAt")
 
   return res.status(200).json(
     new ApiResponse(
