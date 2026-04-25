@@ -107,10 +107,8 @@ const registerUser = asyncHandler( async (req, res) => {
 })
 
 const loginUser = asyncHandler( async (req, res) => {
-  // get data from body
   const {email, username, password} = req.body
 
-  //validate that all fields are filled
   if(!email) {
     throw new ApiError(400, "give email")
   }
