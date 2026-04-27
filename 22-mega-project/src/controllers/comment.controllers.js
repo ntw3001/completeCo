@@ -55,7 +55,7 @@ const addComment = asyncHandler(async (req, res) => {
   const comment = await Comment.create({
     content,
     video: videoId,
-    user: userId
+    owner: userId
   })
 
   return res.status(201).json(
@@ -86,7 +86,7 @@ const updateComment = asyncHandler(async (req, res) => {
     throw new ApiError(404, "This comment has already been devoured")
   }
 
-  if (comment.user.toString() !== userId.toString()) {
+  if (comment.owner.toString() !== userId.toString()) {
     throw new ApiError(403, "You no have permission to edit this comment")
   }
 
@@ -120,7 +120,7 @@ const deleteComment = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Looks like someone else got to it first")
   }
 
-  if (comment.user.toString() !== userId.toString()) {
+  if (comment.owner.toString() !== userId.toString()) {
     throw new ApiError(403, "You are not allowed to delete this comment")
   }
 
