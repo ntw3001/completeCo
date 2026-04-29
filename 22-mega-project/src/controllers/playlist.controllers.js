@@ -12,8 +12,18 @@ const createPlaylist = asyncHandler(async (req, res) => {
 })
 
 const getUserPlaylists = asyncHandler(async (req, res) => {
-    const {userId} = req.params
-    //TODO: get user playlists
+  const {userId} = req.user?._id
+
+  if (!userId) {
+    throw new ApiError(400, "Invalid ID")
+  }
+
+  const playlists = await Playlist.find({ owner: userId })
+    .sort({ createdAt: -1 })
+
+  return res.status(200).json(
+    new ApiResponse(200, playlists, "Lists fetched")
+  )
 })
 
 const getPlaylistById = asyncHandler(async (req, res) => {
@@ -32,8 +42,32 @@ const removeVideoFromPlaylist = asyncHandler(async (req, res) => {
 })
 
 const deletePlaylist = asyncHandler(async (req, res) => {
-    const {playlistId} = req.params
-    // TODO: delete playlist
+  const {playlistId} = req.params
+  const userId = req.user?._id
+
+  if (!userId) {
+    throw new ApiError(401, "Unauthorized")
+  }
+
+  if (!isValidObjectId(playlistId)) {
+    throw new ApiError(400, "Invalid playlist ID")
+  }
+
+  const playlist = await Playlist.findById(playlistId)
+
+  if (!playlist) {
+    throw new ApiError(404, "Looks like someone else got to it first")
+  }
+
+  if (playlist.owner.toString() !== userId.toString()) {
+    throw new ApiError(403, "You are forbaden to delete this playlist")
+  }
+
+  await Playlist.findByIdAndDelete(playlistId)
+
+  return res.status(200).json(
+    new ApiResponse(200, {}, "Playlist removed")
+  )
 })
 
 const updatePlaylist = asyncHandler(async (req, res) => {
