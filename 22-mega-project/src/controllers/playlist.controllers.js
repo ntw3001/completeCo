@@ -6,9 +6,33 @@ import {asyncHandler} from "../utils/asyncHandler.js"
 
 
 const createPlaylist = asyncHandler(async (req, res) => {
-    const {name, description} = req.body
+  const {name, description} = req.body
+  const userId = req.user?._id
 
-    //TODO: create playlist
+  if (!userId) {
+    throw new ApiError(401, "Unauthorized")
+  }
+
+  const trimmedName = name?.trim()
+
+  if (!trimmedName) {
+    throw new ApiError(400, "Needs a nem though doesn't it")
+  }
+
+    if (description.length > 80) {
+    throw new ApiError(400, "Don't need your life story there bruv")
+  }
+
+  const playlist = await Playlist.create({
+    name: trimmedName,
+    owner: userId,
+    description: description.trim() || ""
+  })
+
+  return res
+    .status(201)
+    .json(new ApiResponse(201, playlist, "Playlist made"))
+
 })
 
 const getUserPlaylists = asyncHandler(async (req, res) => {
@@ -33,6 +57,7 @@ const getPlaylistById = asyncHandler(async (req, res) => {
 
 const addVideoToPlaylist = asyncHandler(async (req, res) => {
     const {playlistId, videoId} = req.params
+    // TODO: add video to playlist
 })
 
 const removeVideoFromPlaylist = asyncHandler(async (req, res) => {

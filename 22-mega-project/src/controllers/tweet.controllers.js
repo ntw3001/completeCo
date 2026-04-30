@@ -13,8 +13,8 @@ const createTweet = asyncHandler(async (req, res) => {
     throw new ApiError(401, "Unauthorized")
   }
 
-    if (!content || content.trim().length < 1) {
-  throw new ApiError(400, "Gotta chirp something")
+  if (!content || content.trim().length < 1) {
+    throw new ApiError(400, "Gotta chirp something")
   }
 
 
