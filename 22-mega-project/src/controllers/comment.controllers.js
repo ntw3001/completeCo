@@ -76,7 +76,9 @@ const updateComment = asyncHandler(async (req, res) => {
     throw new ApiError(400, "Invalid comment ID")
   }
 
-  if (!content || content.trim().length < 3) {
+  const trimmedContent = content.trim()
+
+  if (trimmedContent.length < 3) {
     throw new ApiError(400, "Content must be at least 3 characters")
   }
 
@@ -90,14 +92,14 @@ const updateComment = asyncHandler(async (req, res) => {
     throw new ApiError(403, "You no have permission to edit this comment")
   }
 
-  await Comment.findByIdAndUpdate(
+  const updatedComment = await Comment.findByIdAndUpdate(
     commentId,
-    {content: content},
+    {content: trimmedContent},
     {new: true}
   )
 
   return res.status(200).json(
-    new ApiResponse(200, {}, "Comment updated")
+    new ApiResponse(200, updatedComment, "Comment updated")
   )
 
 })
