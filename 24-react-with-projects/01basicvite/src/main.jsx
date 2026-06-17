@@ -30,5 +30,5 @@ const aReactElement = React.createElement(
 )
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    aReactElement
+    <App/>
 )
