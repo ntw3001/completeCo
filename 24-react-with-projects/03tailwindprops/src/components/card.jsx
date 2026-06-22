@@ -1,6 +1,6 @@
 // import React from 'react'
 
-const card = ({title="Wall of Flame", text="There is no way forward here.", image="/images/firePal.png"}) => {
+const card = ({title="Wall of Flame", text="You are forced to turn back by an intense, roaring flame. There is no way forward here.", image="/images/firePal.png"}) => {
   return (
 
     <div className="min-h-[67vh] sm:p-10 p- lg:px-10 bg-gray-800 flex flex-col items-center justify-center">
