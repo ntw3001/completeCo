@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function Login() {
-  const [username, setUsername] = iseState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
   const handleSubmit = (e) => {
