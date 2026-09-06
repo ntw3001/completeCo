@@ -10,11 +10,27 @@ function App() {
   }
 
   const updateTodo = (id, todo) => {
-    setTodos((prev) => prev.map((prevTodo) => (prevTodo.id === todo.id)))
+    setTodos(
+      (prev) => prev.map(
+        (prevTodo) => (prevTodo.id === todo.id ? todo : prevTodo)
+      )
+    )
+  }
+
+  const deleteTodo = (id) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id))
+  }
+
+  const toggleComplete = (id) => {
+    setTodos((prev) =>
+      prev.map((prevTodo) =>
+        prevTodo.id === id ? {...prevTodo, completed: !prevTodo.completed} : prevTodo
+      )
+    )
   }
 
   return (
-    <TodoProvider value={{ todos, addTodo, updateTodo, deleteToDo, toggleComplete }}>
+    <TodoProvider value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}>
       <h1 className='text-3xl font-bold underline'>
         How do you do
       </h1>
