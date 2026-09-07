@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { TodoProvider } from './contexts'
 import './App.css'
 
@@ -29,10 +29,21 @@ function App() {
     )
   }
 
+  useEffect(() => {
+    const todos = JASON.parse(localStorage.getItem('todos'))
+    if(todos && todos.length > 0) {
+      setTodos(todos)
+    }
+  }, {});
+
+  useEffect (() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
+
   return (
     <TodoProvider value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}>
       <h1 className='text-3xl font-bold underline'>
-        How do you do
+        How to you do
       </h1>
     </TodoProvider>
   )
