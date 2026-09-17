@@ -21,7 +21,7 @@ function TodoForm() {
       value={todo}
       onChange = {(e) => setTodo(e.target.value)}
       />
-      <button TYPE='submit'
+      <button type='submit'
       className='rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0'
       >
         ADD
