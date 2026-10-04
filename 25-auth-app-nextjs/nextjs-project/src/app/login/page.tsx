@@ -1,7 +1,50 @@
+'use client'
+import Link from 'next/link'
+import React from 'react'
+import { useRouter } from 'next/navigation'
+import { axios } from 'axios'
+
+
+
 export default function LoginPage() {
+  const [user, setUser] = React.useState({
+    email: '',
+    password: '',
+  })
+
+  const onLogin = async () => {
+
+  }
+
   return (
-    <div className='flex'>
-      <h1 className='text-center text-green-500  text-2xl'>Login</h1>
+    <div className='flex flex-col items-center justify-center min-h-screen py-2'>
+      <h1>login</h1>
+      <hr />
+      <label htmlFor='email'>email</label>
+      <input
+        className='bg-gray-800'
+        id='email'
+        type='text'
+        value={user.email}
+        onChange={(e) => setUser({...user, email: e.target.value})}
+        placeholder='email'
+      />
+      <label htmlFor='password'>password</label>
+      <input
+        className='bg-gray-800'
+        id='password'
+        type='text'
+        value={user.password}
+        onChange={(e) => setUser({...user, password: e.target.value})}
+        placeholder='password'
+      />
+      <button
+        className='p-2 border border-gray-300 rounded-lg mt-2 mb-4 focus:outline-none focus:border-gray-600'>
+        Login
+      </button>
+      <Link href='/signup'>
+        Visit signup page
+      </Link>
     </div>
   )
 }
