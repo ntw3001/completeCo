@@ -2,7 +2,8 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { axios } from 'axios'
+import axios from 'axios'
+import toast from 'react-hot-toast';
 
 
 
@@ -20,13 +21,27 @@ export default function SignupPage() {
     user.username.length > 0
   )
 
-  const onSignup = async () => {
+  const [loading, setLoading] = React.useState(false)
 
+  const onSignup = async () => {
+    try {
+      setLoading(true)
+      const response = await axios.post('/api/users/signup', user)
+      console.log('signup success:', response.data)
+      router.push('/login')
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('Signup failed:', error.message)
+        toast.error(error.message)
+      }
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <div className='flex flex-col items-center justify-center min-h-screen py-2'>
-      <h1>signup</h1>
+      <h1>{loading ? 'Processing...' : 'Signup'}</h1>
       <hr />
       <label htmlFor='username'>username</label>
       <input
@@ -56,6 +71,8 @@ export default function SignupPage() {
         placeholder='password'
       />
       <button
+        onClick={onSignup}
+        disabled={buttonDisabled || loading}
         className='p-2 border border-gray-300 rounded-lg mt-2 mb-4 focus:outline-none focus:border-gray-600'>{buttonDisabled ? 'Signup unavailable' : 'Signup'}
       </button>
       <Link href='/login'>
