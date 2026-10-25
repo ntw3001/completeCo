@@ -1,11 +1,16 @@
 import mongoose from 'mongoose'
-import { stringify } from 'querystring'
+// import { stringify } from 'querystring'
 
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, 'give name plz'],
     unique: true,
+  },
+  email: {
+    type: String,
+    required: [true, 'emal pls'],
+    unique:true,
   },
   password: {
     type: String,
