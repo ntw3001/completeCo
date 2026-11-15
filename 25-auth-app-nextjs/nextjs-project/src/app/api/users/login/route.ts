@@ -15,10 +15,10 @@ export async function POST(request: NextRequest) {
 
     const user = await User.findOne({email})
     console.log('Login lookup:', {
-  email: JSON.stringify(email),
-  database: mongoose.connection.name,
-  collection: User.collection.name,
-})
+      email: JSON.stringify(email),
+      database: mongoose.connection.name,
+      collection: User.collection.name,
+    })
     if (!user) {
       return NextResponse.json({error: 'user don exits >:['},
         {status: 400})
